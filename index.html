@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Příjmy a výdaje</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Příjmy a výdaje</h1>
+    <div class="month">
+      <button class="icon" id="prev" aria-label="Předchozí měsíc">‹</button>
+      <strong id="monthLabel"></strong>
+      <button class="icon" id="next" aria-label="Další měsíc">›</button>
+    </div>
+  </header>
+
+  <section class="balance">
+    <small>Zůstatek za měsíc</small>
+    <div class="big" id="balance">0 Kč</div>
+  </section>
+  <section class="split">
+    <div class="box"><small>Příjmy</small><b class="in" id="sumIn">0 Kč</b></div>
+    <div class="box"><small>Výdaje</small><b class="out" id="sumOut">0 Kč</b></div>
+  </section>
+
+  <form id="form">
+    <div class="seg full">
+      <label><input type="radio" name="type" value="out" checked><span>Výdaj</span></label>
+      <label><input type="radio" name="type" value="in"><span>Příjem</span></label>
+    </div>
+    <input class="full" type="text" id="desc" placeholder="Popis (např. nákup v Albertu)" required maxlength="80">
+    <input type="number" id="amount" placeholder="Částka v Kč" min="0.01" step="0.01" required>
+    <input type="date" id="date" required>
+    <select class="full" id="category"></select>
+    <button class="add full" type="submit">Přidat záznam</button>
+  </form>
+
+  <div class="filters">
+    <select id="filterType" aria-label="Filtr typu">
+      <option value="all">Vše</option><option value="in">Jen příjmy</option><option value="out">Jen výdaje</option>
+    </select>
+  </div>
+  <ul id="list"></ul>
+
+  <h2>Výdaje podle kategorií</h2>
+  <div id="cats"></div>
+
+  <p class="note">Data se ukládají jen v tomto prohlížeči (localStorage). Po vymazání dat prohlížeče zmizí.</p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
